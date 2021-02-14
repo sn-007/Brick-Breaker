@@ -10,7 +10,10 @@ class Paddle:
         self.xrow=28
         self.ycol=90
 
-    def render_paddle(self, grid):
+    
+    def move_paddle_left(self,grid):
+        if(self.ycol > 52):
+            self.ycol-=2
         for i in range(self.length):
             grid[self.xrow][self.ycol+i] = Back.BLACK+" "+Style.RESET_ALL
         grid[self.xrow][self.ycol+self.length-1]=" "
@@ -18,15 +21,23 @@ class Paddle:
     
         return grid
     
-    def move_paddle_left(self):
-        if(self.ycol > 50):
-            self.ycol-=2
+    def move_paddle_right(self,grid):
+        if(self.ycol + 9 < 141):
+            self.ycol+=2
+        for i in range(self.length):
+            grid[self.xrow][self.ycol+i] = Back.BLACK+" "+Style.RESET_ALL
+        grid[self.xrow][self.ycol]=" "
+        grid[self.xrow][self.ycol+1]=" "
     
-    def move_paddle_right(self):
-        self.ycol+=2
+        return grid
+    
         
 
 
+
+
+
+#testing bro
 
 
 #intiialising grid
@@ -37,13 +48,10 @@ b1.create_board()
 paddle= Paddle()
 
 
-for i in range(10):
+for i in range(25):
     if(True):
         #moving paddle
-        paddle.move_paddle_left()
-
-        #updating grid with paddle
-        b1.grid= paddle.render_paddle(b1.grid)
+        b1.grid =paddle.move_paddle_right(b1.grid)
 
         #prinitng background
         b1.print_board()
