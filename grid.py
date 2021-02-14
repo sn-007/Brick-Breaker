@@ -33,6 +33,7 @@ class Board:
 
     #function to print the playing board
     def print_board(self):
+        os.system('clear')
      
         for i in range(0, self.__rows-5):
             for j in range (self.__cols):
@@ -54,7 +55,3 @@ class Board:
         
         
         
-os.system('clear')
-b1=Board(max_row,max_col)
-b1.create_board()
-b1.print_board()
