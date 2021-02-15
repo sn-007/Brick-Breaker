@@ -33,7 +33,8 @@ class Board:
 
     #function to print the playing board
     def print_board(self):
-        os.system('clear')
+        #os.system('clear')
+        print("\033[%d;%dH" % (0, 0))
      
         for i in range(0, self.__rows-5):
             for j in range (self.__cols):

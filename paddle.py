@@ -9,7 +9,6 @@ class Paddle:
         self.length=10
         self.xrow=28
         self.ycol=90
-        self.movingflag="0"
         
 
     def intialrender(self,grid):

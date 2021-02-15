@@ -1,7 +1,7 @@
 from paddle import *
 from input import *
 from grid import *
-
+os.system('clear')
 b1=Board(max_row,max_col)
 b1.create_board()
 
