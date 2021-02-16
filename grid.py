@@ -1,5 +1,8 @@
 from colorama import *
 import os
+
+
+
 init()
 max_row=30
 max_col=190
@@ -36,7 +39,7 @@ class Board:
         #os.system('clear')
         print("\033[%d;%dH" % (0, 0))
      
-        for i in range(0, self.__rows-5):
+        for i in range(0, self.__rows-6):
             for j in range (self.__cols):
                 if(j > 50 and j < 144):
                     print(Back.LIGHTGREEN_EX +self.grid[i][j] + Back.RESET, end='')
@@ -44,7 +47,7 @@ class Board:
                 else:
                     print(self.grid[i][j],end='')
             print()
-        for i in range(self.__rows-5, self.__rows):
+        for i in range(self.__rows-6, self.__rows):
             for j in range (self.__cols):
                 
                 if(j > 50 and j < 144):

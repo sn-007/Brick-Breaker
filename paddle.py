@@ -1,4 +1,4 @@
-from grid import *
+from grid import max_col,max_row
 from colorama import *
 import time
 init()
