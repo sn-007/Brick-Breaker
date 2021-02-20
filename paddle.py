@@ -12,9 +12,14 @@ class Paddle:
         
 
     def intialrender(self,grid):
+
+        for i in range(self.ycol):
+            grid[self.xrow][i]=" "
+
+
         for i in range(self.length):
-            grid[self.xrow][self.ycol+i] = Back.BLACK+" "+Style.RESET_ALL
-        return grid
+            grid[paddle_xrow][paddle_ycol+i] = Back.BLACK+" "+Style.RESET_ALL
+        
 
     def move_paddle_left(self,grid):
         if(self.ycol > left_wall+1):
