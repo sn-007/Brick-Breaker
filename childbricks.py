@@ -1,5 +1,6 @@
 from brick import Brick,os
-from grid import max_col,max_row, Board
+from grid import  Board
+from constants import max_col,max_row
 from colorama import *
 init()
 

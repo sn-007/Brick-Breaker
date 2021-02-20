@@ -1,4 +1,4 @@
-from grid import max_col,max_row
+from constants import *
 from colorama import *
 import time
 init()
@@ -6,9 +6,9 @@ init()
 class Paddle:
 
     def __init__(self):
-        self.length=10
-        self.xrow=28
-        self.ycol=90
+        self.length=paddle_length
+        self.xrow=paddle_xrow
+        self.ycol=paddle_ycol
         
 
     def intialrender(self,grid):
@@ -17,29 +17,24 @@ class Paddle:
         return grid
 
     def move_paddle_left(self,grid):
-        if(self.ycol > 52):
-            self.ycol-=2
+        if(self.ycol > left_wall+1):
+            self.ycol-=paddle_speed
             for j in range(max_col):
                 grid[self.xrow][j]=" "
             for i in range(self.length):
                 grid[self.xrow][self.ycol+i] = Back.BLACK+" "+Style.RESET_ALL
-            # if(self.movingflag=="L"):
-            #     grid[self.xrow][self.ycol+self.length-1]=" "
-            #     grid[self.xrow][self.ycol+self.length-2]=" "
-            # self.movingflag="L"
+            
     
         return grid
     
     def move_paddle_right(self,grid):
-        if(self.ycol + 9 < 141):
-            self.ycol+=2
+        if(self.ycol + paddle_length < right_wall-1):
+            self.ycol+=paddle_speed
             for j in range(max_col):
                 grid[self.xrow][j]=" "
             for i in range(self.length):
                 grid[self.xrow][self.ycol+i] = Back.BLACK+" "+Style.RESET_ALL
-            # if(self.movingflag=="R")
-            #     grid[self.xrow][self.ycol]=" "
-            #     grid[self.xrow][self.ycol+1]=" "
+            
                
         return grid
     

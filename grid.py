@@ -1,11 +1,10 @@
 from colorama import *
 import os
+from constants import *
 
 
 
 init()
-max_row=30
-max_col=190
 class Board:
 
     #Creates the entire board for the game
@@ -22,7 +21,7 @@ class Board:
         for i in range(self.__rows):
             self.temp=[]
             for j in range(self.__cols):
-                if(j == 50 or j == 144):
+                if(j == left_wall or j == right_wall):
                     self.temp.append("|")
                 else:
                     self.temp.append(" ")
@@ -39,18 +38,18 @@ class Board:
         #os.system('clear')
         print("\033[%d;%dH" % (0, 0))
      
-        for i in range(0, self.__rows-6):
+        for i in range(0, self.__rows-white_board_len):
             for j in range (self.__cols):
-                if(j > 50 and j < 144):
+                if(j > left_wall and j < right_wall):
                     print(Back.LIGHTGREEN_EX +self.grid[i][j] + Back.RESET, end='')
 
                 else:
                     print(self.grid[i][j],end='')
             print()
-        for i in range(self.__rows-6, self.__rows):
+        for i in range(self.__rows-white_board_len, self.__rows):
             for j in range (self.__cols):
                 
-                if(j > 50 and j < 144):
+                if(j > left_wall and j < right_wall):
                     print(Back.WHITE +self.grid[i][j] + Back.RESET, end='')
 
                 else:

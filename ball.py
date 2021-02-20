@@ -1,4 +1,5 @@
 from colorama import *
+from constants import *
 
 
 class Ball:
@@ -9,10 +10,10 @@ class Ball:
         self.yspeed=1
 
     def move(self):
-        if(self.y+self.yspeed >= 144 or self.y+self.yspeed <= 50 ):
+        if(self.y+self.yspeed >= right_wall or self.y+self.yspeed <= left_wall ):
             self.yspeed*=-1
             
-        if(self.x+self.xspeed >= 28 or self.x+self.xspeed <= 0 ):
+        if(self.x+self.xspeed >= paddle_xrow or self.x+self.xspeed <= top_wall ):
             self.xspeed*=-1
             
         self.y=self.y+self.yspeed
@@ -25,7 +26,7 @@ class Ball:
         grid[self.x][self.y]= Fore.BLUE+"0"+Style.RESET_ALL
         prevx=self.x-self.xspeed
         prevy=self.y-self.yspeed
-        if(prevx <= 27):
+        if(prevx <= paddle_xrow-1):
             grid[prevx][prevy]= " "
         
 
