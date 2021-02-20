@@ -8,7 +8,7 @@ class Ball:
         self.y=y
         self.xspeed=-1
         self.yspeed=1
-        self.lives=3
+        self.lives=lives
 
     def move(self,paddle,grid):
         px=paddle.xrow
@@ -24,7 +24,11 @@ class Ball:
         if(self.x+self.xspeed > paddle_xrow-1):
 
             if(py <= self.y <= py+paddle_length-1 ):
+                if( (0 <= self.y-py <= 2 *paddle_length/5 )  or (3 * paddle_length/5 <= self.y-py <= paddle_length)):
+                    if(self.xspeed +1 <=2):
+                        self.xspeed+=1
                 self.xspeed*=-1
+
             else:
                 grid[self.x][self.y]=" "
                 self.x=ball_startx

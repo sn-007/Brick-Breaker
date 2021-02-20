@@ -14,7 +14,7 @@ top_wall=0 #(x coordinate of top wall)
 paddle_length=10 #(horizontal lenght)
 paddle_xrow=28
 paddle_ycol=90 #(starting point to the left)
-paddle_speed=2
+paddle_speed=4
 
 
 
@@ -22,3 +22,7 @@ paddle_speed=2
 #ball
 ball_startx=27
 ball_starty=95
+
+#bricklength
+brick_length=11
+lives=9

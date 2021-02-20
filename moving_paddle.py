@@ -10,7 +10,7 @@ b1=Board(max_row,max_col)
 b1.create_board()
 
 paddle=Paddle()
-b1.grid=paddle.intialrender(b1.grid)
+paddle.intialrender(b1.grid)
 bricks=[]
 lastx=0
 for countx in range (1,9):

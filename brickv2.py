@@ -1,8 +1,9 @@
-from grid import max_col,max_row, Board
+from constants import max_col,max_row,brick_length
 from colorama import *
 import time
 import os
 from paddle import Paddle
+from grid import Board
 init()
 
 class Brick:
@@ -10,15 +11,19 @@ class Brick:
     def __init__(self,x,y):
         self.x=x
         self.y=y
-        self.xlen=3
-        self.ylen=12
+        self.ylen=brick_length
 
-    def create_brick(self,grid,colour):
-        for i in range(self.xlen):
-            for j in range(self.ylen):
-                 grid[self.x+i][self.y+j]=colour+" " + Style.RESET_ALL
-        #grid[self.x][self.y]=Back.LIGHTRED_EX+" " + Style.RESET_ALL
-        return grid
+        
+
+    def create_brick(self,grid,colour,power):
+        for j in range(self.ylen):
+                grid[self.x][self.y+j]=colour+power+ Style.RESET_ALL
+    
+    def degrade(self,grid):
+        for j in range(self.ylen):
+                grid[self.x][self.y+j]=" "
+        
+        
             
         
 #testing
