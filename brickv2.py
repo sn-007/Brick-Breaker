@@ -27,22 +27,6 @@ class Brick:
         
         
         
-            
-        
-#testing
-
-# os.system('clear')
-# b1=Board(max_row,max_col)
-# b1.create_board()
-
-# paddle=Paddle()
-# b1.grid=paddle.intialrender(b1.grid)
-
-# brick=Brick(0,51)
-# b1.grid=brick.create_brick(b1.grid)
-# b1.grid[0][63]=Back.RED+" " + Style.RESET_ALL
-
-# b1.print_board()
            
 
     

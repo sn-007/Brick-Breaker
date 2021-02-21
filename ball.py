@@ -8,9 +8,15 @@ class Ball:
         self.y=y
         self.xspeed=-2
         self.yspeed=1
-        self.lives=lives
         self.score=0
         self.rem=100
+        self.__live=lives
+
+    def getlives(self):
+        return self.__live
+    def declives(self):
+        self.__live-=1
+
 
     def move(self,paddle,grid):
         px=paddle.xrow
@@ -42,7 +48,7 @@ class Ball:
                 paddle.xrow=paddle_xrow
                 paddle.ycol=paddle_ycol
                 paddle.intialrender(grid)
-                self.lives-=1
+                self.declives()
                 return 0
             
         self.y=self.y+self.yspeed

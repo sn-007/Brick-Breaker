@@ -4,7 +4,7 @@ from childbricksv2 import Brick1, Brick2, Brick3
 import random
 from time_score import update_score
 from colorama import *
-from powerup import *
+
 init()
 
 allbricks=[]
@@ -17,15 +17,17 @@ def generate_bricks(grid,ball):
 
         y1=random.randint(left_wall+3, right_wall-brick_length-3)
         
-        b=random.randint(1,20)
+        b=random.randint(1,3)
 
-        if(15 <= b <=20):
+        if(i%3==1):
             brick=Brick1(i,y1)
             brick.create_brick(grid,brick.colour,brick.power)
             ball.rem+=1
             allbricks.append(brick)
 
-        elif ( 5 <= b <=12):
+
+
+        elif (i%3==2):
             brick=Brick2(i,y1)
             brick.create_brick(grid,brick.colour,brick.power)
             ball.rem+=2

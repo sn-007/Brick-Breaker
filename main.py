@@ -50,7 +50,8 @@ while(True):
     loopstart=time.time()
     current_time=int(loopstart-starttime)
     printtime(loopstart,starttime,b1.grid)
-    printlives(ball.lives,b1.grid)
+    printlives(ball.getlives(),b1.grid)
+
 
     
 
@@ -59,7 +60,7 @@ while(True):
     key=input_to(getch)
     if(ball_flag==1):
         b1.grid,ball_flag=ball.launch(b1.grid,paddle)
-
+    
 
     if(key == 'a'):
         b1.grid=paddle.move_paddle_left(b1.grid)
@@ -84,8 +85,8 @@ while(True):
     elif(key=="."):
         break
 
-    if(ball.lives==0 or ball.rem==0):
-        printlives(ball.lives,b1.grid)
+    if(ball.getlives()==0 or ball.rem==0):
+        printlives(ball.getlives(),b1.grid)
         b1.print_board()
         break
     

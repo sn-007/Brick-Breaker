@@ -49,29 +49,6 @@ class Paddle:
 
 
 
-# #testing bro
-
-
-# #intiialising grid
-# b1=Board(max_row,max_col)
-# b1.create_board()
-
-# #creating paddle
-# paddle= Paddle()
-# #b1.grid=paddle.intialrender(b1.grid)
-
-
-# for i in range(100):
-
-#     if(i%3==1):
-#         b1.grid =paddle.move_paddle_left(b1.grid)
-#         b1.print_board()
-
-#     elif(i%3==2):
-#         b1.grid =paddle.move_paddle_right(b1.grid)
-#         b1.print_board()
-       
-#     time.sleep(0.1)
         
 
 
