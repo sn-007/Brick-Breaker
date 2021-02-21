@@ -10,6 +10,7 @@ class Ball:
         self.yspeed=1
         self.lives=lives
         self.score=0
+        self.rem=100
 
     def move(self,paddle,grid):
         px=paddle.xrow

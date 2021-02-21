@@ -26,6 +26,7 @@ class Brick:
                 grid[self.x][self.y+j]=" "
         
         
+        
             
         
 #testing

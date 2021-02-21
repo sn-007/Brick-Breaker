@@ -7,6 +7,8 @@ from ball import Ball
 from time_score import printlives, printtime, allocate_grid_for_time, allocate_grid_for_score, allocate_grid_for_lives
 from constants import *
 from generate_bricks import generate_bricks, check_collison
+from colorama import *
+init()
 
 #starttime
 starttime=time.time()
@@ -16,8 +18,7 @@ os.system('clear')
 b1=Board(max_row,max_col)
 b1.create_board()
 
-#bricks Generation:
-generate_bricks(b1.grid)
+
 
 
 #time scores and lives handling
@@ -40,7 +41,10 @@ ball_flag=0
 
 b1.print_board()
 
+#bricks Generation:
+generate_bricks(b1.grid,ball)
 
+powerup=False
 while(True):
     check_collison(b1.grid,ball)
     loopstart=time.time()
@@ -59,10 +63,18 @@ while(True):
 
     if(key == 'a'):
         b1.grid=paddle.move_paddle_left(b1.grid)
+        if(ball_flag==0 and left_wall + 3 <= ball.y <=right_wall ):
+            b1.grid[ball.x][ball.y]=" "
+            ball.y=ball.y-paddle_speed
+            b1.grid[ball.x][ball.y]=Fore.BLUE+"0"+Style.RESET_ALL
         
 
     elif(key == 'd'):
         b1.grid=paddle.move_paddle_right(b1.grid)
+        if(ball_flag==0 and left_wall <= ball.y <=right_wall-3):
+            b1.grid[ball.x][ball.y]=" "
+            ball.y=ball.y+paddle_speed
+            b1.grid[ball.x][ball.y]=Fore.BLUE+"0"+Style.RESET_ALL
         
     elif(key == 'l' and ball_flag==0):
         b1.grid,ball_cond=ball.launch(b1.grid,paddle)
@@ -72,7 +84,7 @@ while(True):
     elif(key=="."):
         break
 
-    if(ball.lives==0):
+    if(ball.lives==0 or ball.rem==0):
         printlives(ball.lives,b1.grid)
         b1.print_board()
         break

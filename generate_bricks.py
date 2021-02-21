@@ -3,28 +3,35 @@ from constants import *
 from childbricksv2 import Brick1, Brick2, Brick3
 import random
 from time_score import update_score
+from colorama import *
+from powerup import *
+init()
 
 allbricks=[]
+stop=0
+def generate_bricks(grid,ball):
 
-def generate_bricks(grid):
+    ball.rem=0
     
     for i in range (2,max_row-white_board_len,4):
 
-        y1=random.randint(left_wall, right_wall-brick_length-3)
+        y1=random.randint(left_wall+3, right_wall-brick_length-3)
         
-        b=random.randint(1,9)
+        b=random.randint(1,20)
 
-        if(7 <= b <=9):
+        if(15 <= b <=20):
             brick=Brick1(i,y1)
             brick.create_brick(grid,brick.colour,brick.power)
+            ball.rem+=1
             allbricks.append(brick)
 
-        elif ( 3 <= b <=6):
+        elif ( 5 <= b <=12):
             brick=Brick2(i,y1)
             brick.create_brick(grid,brick.colour,brick.power)
+            ball.rem+=2
             allbricks.append(brick)
         
-        elif (1<= b <=2):
+        else:
             brick=Brick3(i,y1)
             brick.create_brick(grid,brick.colour,brick.power)
             allbricks.append(brick)
@@ -33,16 +40,22 @@ def generate_bricks(grid):
 def check_collison(grid,ball):
     x=ball.x
     y=ball.y
+
     
     for block in allbricks:
+        
+
         if(block.gone==1):
             for j in range (block.ylen):
                 grid[block.x][block.y+j]=" "
             continue
+    
         if(block.power=="1" or block.power=='2'):
             if( (block.x==x-1 or block.x==x+1 ) and (block.y <= y <= block.y + block.ylen-1 ) ):
                 block.degrade(grid)
+                
                 ball.score+=1
+                ball.rem-=1
                 update_score(grid,ball.score)
                 grid[x][y]=" "
                 if(ball.xspeed < 0):
