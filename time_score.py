@@ -36,3 +36,12 @@ def allocate_grid_for_lives(grid):
 
 def printlives(lives,grid):
     grid[7][6]=lives
+
+def update_score(grid,score):
+    grid[5][7]=score%10
+    if(score > 10):
+        score/=10
+        score=int(score)
+    else:
+        score=0
+    grid[5][6]=score

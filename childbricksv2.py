@@ -25,6 +25,7 @@ class Brick2(Brick):
             self.power="1"
             self.create_brick(grid,self.colour,self.power)
         elif(self.power=="1"):
+            self.gone=1
             for j in range(self.ylen):
                 grid[self.x][self.y+j]=" "
 

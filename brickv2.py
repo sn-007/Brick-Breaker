@@ -12,6 +12,7 @@ class Brick:
         self.x=x
         self.y=y
         self.ylen=brick_length
+        self.gone=0
 
         
 
@@ -20,6 +21,7 @@ class Brick:
                 grid[self.x][self.y+j]=colour+power+ Style.RESET_ALL
     
     def degrade(self,grid):
+        self.gone=1
         for j in range(self.ylen):
                 grid[self.x][self.y+j]=" "
         
